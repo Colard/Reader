@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/reading"
+        android:orderInCategory="1"
+        android:title="I AM READING" />
+    <item
+        android:id="@+id/in_the_plans"
+        android:orderInCategory="3"
+        android:title="IN THE PLANS" />
+    <item
+        android:id="@+id/has_been_read"
+        android:orderInCategory="2"
+        android:title="IT HAS BEEN READ" />
+    <item
+        android:id="@+id/favorite"
+        android:orderInCategory="2"
+        android:title="FAVORITE" />
+</menu>

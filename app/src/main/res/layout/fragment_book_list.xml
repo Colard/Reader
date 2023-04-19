@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BookListFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:id="@+id/header"
+            android:background="@drawable/bottom_panel">
+
+            <TextView
+                android:id="@+id/headerText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="ALL BOOK1"
+
+                android:textColor="#FFF"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/header"
+            android:layout_centerHorizontal="true">
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="2"
+                android:layout_gravity="center_horizontal">
+
+                <LinearLayout style="@style/GridLinearLayoutStyle">
+
+                    <androidx.cardview.widget.CardView style="@style/GridCardViewStyle">
+                        <ImageView
+                            style="@style/GridImageViewStyle"
+                            android:src="@drawable/cover"/>
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        style="@style/GridTextViewStyle"
+                        android:text="lorem ipsum  lorem ipsum lorem ipsum">
+                    </TextView>
+                </LinearLayout>
+                <LinearLayout style="@style/GridLinearLayoutStyle">
+
+                    <androidx.cardview.widget.CardView style="@style/GridCardViewStyle">
+                        <ImageView
+                            style="@style/GridImageViewStyle"
+                            android:src="@drawable/cover2"/>
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        style="@style/GridTextViewStyle"
+                        android:text="lorem ipsum  lorem ipsum lorem ipsum">
+                    </TextView>
+                </LinearLayout>
+                <LinearLayout style="@style/GridLinearLayoutStyle">
+
+                    <androidx.cardview.widget.CardView style="@style/GridCardViewStyle">
+                        <ImageView
+                            style="@style/GridImageViewStyle"
+                            android:src="@drawable/cover"/>
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        style="@style/GridTextViewStyle"
+                        android:text="lorem ipsum  lorem ipsum lorem ipsum">
+                    </TextView>
+                </LinearLayout>
+                <LinearLayout style="@style/GridLinearLayoutStyle">
+
+                    <androidx.cardview.widget.CardView style="@style/GridCardViewStyle">
+                        <ImageView
+                            style="@style/GridImageViewStyle"
+                            android:src="@drawable/cover2"/>
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        style="@style/GridTextViewStyle"
+                        android:text="lorem ipsum  lorem ipsum lorem ipsum">
+                    </TextView>
+                </LinearLayout>
+                <LinearLayout style="@style/GridLinearLayoutStyle">
+
+                    <androidx.cardview.widget.CardView style="@style/GridCardViewStyle">
+                        <ImageView
+                            style="@style/GridImageViewStyle"
+                            android:src="@drawable/cover"/>
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        style="@style/GridTextViewStyle"
+                        android:text="lorem ipsum  lorem ipsum lorem ipsum">
+                    </TextView>
+                </LinearLayout>
+                <LinearLayout style="@style/GridLinearLayoutStyle">
+
+                    <androidx.cardview.widget.CardView style="@style/GridCardViewStyle">
+                        <ImageView
+                            style="@style/GridImageViewStyle"
+                            android:src="@drawable/cover2"/>
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        style="@style/GridTextViewStyle"
+                        android:text="lorem ipsum  lorem ipsum lorem ipsum">
+                    </TextView>
+                </LinearLayout>
+                <LinearLayout style="@style/GridLinearLayoutStyle">
+
+                    <androidx.cardview.widget.CardView style="@style/GridCardViewStyle">
+                        <ImageView
+                            style="@style/GridImageViewStyle"
+                            android:src="@drawable/cover"/>
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        style="@style/GridTextViewStyle"
+                        android:text="lorem ipsum  lorem ipsum lorem ipsum">
+                    </TextView>
+                </LinearLayout>
+                <LinearLayout style="@style/GridLinearLayoutStyle">
+
+                    <androidx.cardview.widget.CardView style="@style/GridCardViewStyle">
+                        <ImageView
+                            style="@style/GridImageViewStyle"
+                            android:src="@drawable/cover2"/>
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        style="@style/GridTextViewStyle"
+                        android:text="lorem ipsum  lorem ipsum lorem ipsum">
+                    </TextView>
+                </LinearLayout>
+            </GridLayout>
+        </ScrollView>
+    </RelativeLayout>
+</FrameLayout>
