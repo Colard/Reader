@@ -1,14 +1,12 @@
 package com.example.myapplication;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentTransaction;
-
-import android.content.Intent;
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.FrameLayout;
+
+import com.example.myapplication.SupportClasses.States;
 
 public class BookListMenuActivity extends BaseActivity {
 
@@ -21,14 +19,35 @@ public class BookListMenuActivity extends BaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Bundle arguments = getIntent().getExtras();
+        States.bookListType arguments = (States.bookListType) getIntent().getSerializableExtra("type");
+
+        boolean isFirstStart = true;
+
+        if (savedInstanceState != null) {
+            isFirstStart = savedInstanceState.getBoolean("isFirstStart");
+        }
+
+        if(!isFirstStart) return;
+
         if(arguments != null) {
-            String type = arguments.get("type").toString();
-            ChangeType(type);
+            ChangeType(arguments);
         } else {
-            ChangeType("all");
+            ChangeType(States.bookListType.all);
         }
     }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putBoolean("isFirstStart", false);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -36,47 +55,23 @@ public class BookListMenuActivity extends BaseActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        String type = "";
-
-        switch(id){
-            case R.id.reading :
-                type = "read";
-                break;
-            case R.id.in_the_plans:
-                type = "plans";
-                break;
-            case R.id.has_been_read:
-                type = "readed";
-                break;
-            case R.id.favorite:
-                type = "favorite";
-                break;
-            default:
-                type = "all";
-                break;
-        }
-
-        ChangeType(type);
-
-        return true;
+    public void onBackPressed()
+    {
+        ChangeType(States.bookListType.all);
     }
 
     public void moveToFavorite(View v) {
-        ChangeType("favorite");
+        ChangeType(States.bookListType.favorite);
     }
 
     public void moveToAllBooks(View v) {
-        ChangeType("all");
+        ChangeType(States.bookListType.all);
     }
 
-    public void ChangeType(String type) {
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_in_right);
+    public void ChangeType(States.bookListType type) {
         BookListFragment fragment = BookListFragment.newInstance(type);
-        ft.replace(R.id.book_list_fragment, fragment);
-        ft.addToBackStack(null);
-        ft.commit();
+        changeFragment(type, this.getClass(), fragment, R.id.book_list_fragment);
     }
+
+
 }
