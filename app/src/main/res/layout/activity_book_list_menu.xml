@@ -56,4 +56,11 @@
             android:src="@drawable/infwo" />
 
     </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/google_books_list"
+        />
+
 </RelativeLayout>

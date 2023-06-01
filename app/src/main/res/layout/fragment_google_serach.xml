@@ -3,7 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BookListFragment">
+    tools:context=".BookListFragment"
+    android:background="#FFF"
+    android:clickable="true">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -25,8 +27,8 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:fontFamily="@font/montserrat_bold"
-                android:text="ALL BOOK1"
 
+                android:text="Search"
                 android:textColor="#FFF"
                 android:textSize="25dp"
                 android:textStyle="bold" />
@@ -37,19 +39,20 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/header"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="65dp">
+            android:layout_centerHorizontal="true">
 
             <GridLayout
+                android:id="@+id/google_book_grid"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:columnCount="2"
-                android:layout_gravity="center_horizontal"
-                android:id="@+id/list_google_book_grid">
+                android:layout_gravity="center_horizontal">
             </GridLayout>
         </ScrollView>
+
+
         <ProgressBar
-            android:id="@+id/BookListLoadingPB"
+            android:id="@+id/idLoadingPB"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
