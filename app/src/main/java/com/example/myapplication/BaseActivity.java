@@ -24,8 +24,6 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected abstract int getLayoutResourceId();
 
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

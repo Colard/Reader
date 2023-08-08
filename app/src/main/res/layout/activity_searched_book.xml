@@ -97,36 +97,20 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:orientation="horizontal">
-                <Spinner
-                    android:id="@+id/spinner_book_status"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:popupBackground="#B983FF"
-                    android:background="#B983FF"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/idBtnRead"
+                    android:id="@+id/idBtnAddToLib"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
                     android:layout_marginEnd="4dp"
                     android:layout_marginTop="4dp"
                     android:textStyle="bold"
-                    android:text="Read"
+                    android:text="Add to library"
                     android:textAllCaps="false" />
 
             </LinearLayout>
@@ -164,24 +148,6 @@
                     android:layout_marginTop="4dp"
                     android:textStyle="bold"
                     android:text="Buy"
-                    android:textAllCaps="false" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/idDeleteBtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginEnd="4dp"
-                    android:layout_marginTop="4dp"
-                    android:textStyle="bold"
-                    android:text="Remove from shelf"
                     android:textAllCaps="false" />
             </LinearLayout>
             <!--text view for displaying book description-->

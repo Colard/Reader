@@ -3,6 +3,7 @@ package com.example.myapplication;
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -49,10 +50,24 @@ public class GoogleSerachFragment extends BaseFragment {
     public void update(Context context, ArrayList<BookInfo> list) {
         gridbox.removeAllViews();
         for (int i = 0; i < list.size(); i++) {
-            BookButton btn = new BookButton(context, list.get(i));
+            BookInfo book = list.get(i);
+            BookButton btn = new BookButton(context, book);
             GridLayout.LayoutParams parem = new GridLayout.LayoutParams(GridLayout.spec(GridLayout.UNDEFINED, 1f),      GridLayout.spec(GridLayout.UNDEFINED, 1f));;
             btn.setLayoutParams(parem);
+
+            btn.setOnClickListener(v -> {
+                openBook(book);
+            });
             gridbox.addView(btn);
         }
+    }
+
+    void openBook(BookInfo bookInfo) {
+        Intent i = new Intent(getContext(), SearchedBook.class);
+
+        i.putExtra("book", bookInfo);
+
+        startActivity(i);
+        getActivity().overridePendingTransition(R.anim.swipe_to_up, R.anim.no_animation);
     }
 }

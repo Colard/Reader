@@ -1,4 +1,12 @@
 package com.example.myapplication.SupportClasses;
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
+import android.util.Log;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -17,6 +25,8 @@ public class BookInfo implements Serializable {
     private String previewLink;
     private String infoLink;
     private String buyLink;
+    private String webLink;
+    private String accessViewStatus;
 
     // creating getter and setter methods
     public String getTitle() {
@@ -106,6 +116,12 @@ public class BookInfo implements Serializable {
     public String getId() {
         return id;
     }
+    public String getWebLink() {
+        return webLink;
+    }
+    public String getaccessViewStatus() {
+        return accessViewStatus;
+    }
     public void setBuyLink(String buyLink) {
         this.buyLink = buyLink;
     }
@@ -132,5 +148,76 @@ public class BookInfo implements Serializable {
         this.infoLink = infoLink;
         this.buyLink = buyLink;
         this.shelfID = -1;
+    }
+
+    public BookInfo(JSONObject itemsObj) throws JSONException {
+
+            this.id = itemsObj.optString("id");
+            this.shelfID = -1;
+
+            JSONObject volumeObj = itemsObj.getJSONObject("volumeInfo");
+            setBookInfo(volumeObj);
+
+            JSONObject saleInfoObj = itemsObj.optJSONObject("saleInfo");
+            setsSaleInfo(saleInfoObj);
+
+            JSONObject accessInfo = itemsObj.optJSONObject("accessInfo");
+            setsAccessInfo(accessInfo);
+
+            ArrayList<String> authorsArrayList = new ArrayList<>();
+            if (volumeObj.has("authors")) {
+                JSONArray authorsArray = volumeObj.getJSONArray("authors");
+                authorsArrayList = new ArrayList<>();
+                if (authorsArray.length() != 0) {
+                    for (int j = 0; j < authorsArray.length(); j++) {
+                        authorsArrayList.add(authorsArray.optString(j));
+                    }
+                }
+            }
+            this.authors = authorsArrayList;
+        }
+
+    private String checkString(String str) {
+        return (str != null) ? str : "";
+    }
+
+    private String cutString(String text) {
+        int startIndex = text.indexOf("hl=");
+        return text.substring(0, startIndex);
+    }
+
+    private void setBookInfo(JSONObject volumeObj){
+        this.title = checkString(volumeObj.optString("title"));
+        this.subtitle = checkString(volumeObj.optString("subtitle"));
+        this.publisher = checkString(volumeObj.optString("publisher"));
+        this.publishedDate = checkString(volumeObj.optString("publishedDate"));
+        this.description = checkString(volumeObj.optString("description"));
+        this.pageCount = volumeObj.optInt("pageCount");
+        JSONObject imageLinks = volumeObj.optJSONObject("imageLinks");
+        this.previewLink = checkString(volumeObj.optString("previewLink"));
+        this.infoLink = checkString(volumeObj.optString("infoLink"));
+
+        if (imageLinks != null) {
+            this.thumbnail = checkString(imageLinks.optString("thumbnail"));
+        } else {
+            this.thumbnail = null;
+        }
+    }
+
+    private void setsSaleInfo(JSONObject saleInfoObj) {
+        if (saleInfoObj != null)
+            this.buyLink = checkString(saleInfoObj.optString("buyLink"));
+        else
+            this.buyLink = null;
+    }
+
+    private void setsAccessInfo(JSONObject accessInfo) {
+        if (accessInfo != null) {
+            this.webLink = cutString(checkString(accessInfo.optString("webReaderLink")));
+            this.accessViewStatus = checkString(accessInfo.optString("accessViewStatus"));
+        } else {
+            this.webLink = null;
+            this.accessViewStatus = null;
+        }
     }
 }

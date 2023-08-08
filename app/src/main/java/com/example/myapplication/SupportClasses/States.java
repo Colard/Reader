@@ -1,7 +1,7 @@
 package com.example.myapplication.SupportClasses;
 
 public class States {
-    public static enum bookListType{
+    public enum bookListType{
         read, plans, readed, all, favorite,
     }
 

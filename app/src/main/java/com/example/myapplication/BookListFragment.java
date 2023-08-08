@@ -202,45 +202,15 @@ public class BookListFragment extends BaseFragment {
         JSONArray itemsArray = response.getJSONArray("items");
         for (int i = 0; i < itemsArray.length(); i++) {
             JSONObject itemsObj = itemsArray.getJSONObject(i);
-            String id = itemsObj.optString("id");
-            JSONObject volumeObj = itemsObj.getJSONObject("volumeInfo");
-            String title = checkString(volumeObj.optString("title"));
-            String subtitle = checkString(volumeObj.optString("subtitle"));
-            String publisher = checkString(volumeObj.optString("publisher"));
-            String publishedDate = checkString(volumeObj.optString("publishedDate"));
-            String description = checkString(volumeObj.optString("description"));
-            int pageCount = volumeObj.optInt("pageCount");
-            JSONObject imageLinks = volumeObj.optJSONObject("imageLinks");
-            String previewLink = checkString(volumeObj.optString("previewLink"));
-            String infoLink = checkString(volumeObj.optString("infoLink"));
-            JSONObject saleInfoObj = itemsObj.optJSONObject("saleInfo");
 
-            ArrayList<String> authorsArrayList = new ArrayList<>();
-            if (volumeObj.has("authors")) {
-                JSONArray authorsArray = volumeObj.getJSONArray("authors");
-                authorsArrayList = new ArrayList<>();
-                if (authorsArray.length() != 0) {
-                    for (int j = 0; j < authorsArray.length(); j++) {
-                        authorsArrayList.add(authorsArray.optString(i));
-                    }
-                }
-            }
-
-            String thumbnail;
-            if (imageLinks != null)
-                thumbnail = checkString(imageLinks.optString("thumbnail"));
-            else
-                thumbnail = null;
-
-            String buyLink;
-            if (saleInfoObj != null)
-                buyLink = checkString(saleInfoObj.optString("buyLink"));
-            else
-                buyLink = null;
-
-            BookInfo bookInfo = new BookInfo(id, title, subtitle, authorsArrayList, publisher, publishedDate, description, pageCount, thumbnail, previewLink, infoLink, buyLink);
+            BookInfo bookInfo = new BookInfo(itemsObj);
             bookInfo.setShelfID(shelfID);
 
+            Log.d(TAG, "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            Log.d(TAG, "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            Log.d(TAG, "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            Log.d(TAG, bookInfo.getWebLink());
+            Log.d(TAG, bookInfo.getaccessViewStatus());
             bookInfoArrayList.add(bookInfo);
         }
     }
